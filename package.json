@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "test": "jest --coverage",
+    "build": "mkdir -p dist && cp -r src/* dist/"
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/mouhamed54diagne/my-ci-project/issues"
   },
-  "homepage": "https://github.com/mouhamed54diagne/my-ci-project#readme"
+  "homepage": "https://github.com/mouhamed54diagne/my-ci-project#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "eslint": "^9.36.0",
+    "globals": "^16.4.0",
+    "jest": "^30.2.0",
+    "typescript-eslint": "^8.44.1"
+  }
 }
