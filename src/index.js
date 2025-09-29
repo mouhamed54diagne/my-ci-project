@@ -1,2 +1,7 @@
-const sum = (a, b) => a + b;
-module.exports = sum;
+const calculator = require('./calculator');
+const stringUtils = require('./stringUtils');
+
+module.exports = {
+  calculator,
+  stringUtils,
+};
