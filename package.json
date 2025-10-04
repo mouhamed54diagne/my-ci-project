@@ -4,6 +4,7 @@
   "description": "Multi-stage CI/CD pipeline with matrix builds, caching, and code coverage",
   "main": "src/index.js",
   "scripts": {
+    "start": "node server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "jest",
