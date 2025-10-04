@@ -106,10 +106,25 @@ jobs:
       - name: Display build info
         run: cat dist/build-info.json
 
+  # Stage 4: Deploy to Render (NEW!)
+  deploy:
+    name: Deploy to Render
+    needs: [lint, test, build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+      - name: Trigger Render Deployment
+        run: |
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+      
+      - name: Deployment Status
+        run: echo "✅ Deployment triggered on Render"
+
   # Summary Job
   ci-success:
     name: CI Pipeline Success
-    needs: [lint, test, build]
+    needs: [lint, test, build, deploy]
     runs-on: ubuntu-latest
     if: success()
     
@@ -120,3 +135,7 @@ jobs:
           echo "✅ Lint: Passed"
           echo "✅ Test: Passed (all matrix combinations)"
           echo "✅ Build: Passed"
+          echo "✅ Deploy: Triggered"
+
+
+
